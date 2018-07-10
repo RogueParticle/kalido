@@ -327,7 +327,8 @@ function randDraw(){
   clear(kalido);
   if (linesEnabled) {
     addLineCoord();
-    if (xCoords.length == segments) {
+    //if (xCoords.length == segments) {
+    while ( xCoords.length > segments) {
       removeLineCoord();
     }
     drawLine(kalido);
@@ -340,6 +341,33 @@ function randDraw(){
   }
 }
 
+function resetSegments(newValue) {
+  segments = newValue;
+}
+
+function resetLength(newValue) {
+  lineLength = newValue;
+}
+
+function resetWidth(newValue) {
+  widthMax = newValue;
+}
+
+function resetWidthIncrement(newValue) {
+  widthIncrementMax = newValue;
+}
+
+function resetWidthDuration(newValue) {
+   widthDurationMax = newValue;
+}
+
+function resetColorIncrement(newValue) {
+  colorIncrementMax = newValue;
+}
+
+function resetColorDuration(newValue) {
+  colorDurationMax = newValue;
+}
 function init(){
   // populate coordinate array
   xCoords[0] = Math.floor((Math.random()*xMax)+1);
@@ -348,5 +376,13 @@ function init(){
   colors['g'][0] = gColor;
   colors['b'][0] = bColor;
   widths[0] = lineWidth;
+  // set defaults in html control
+  document.getElementById("segments").value = segments;
+  document.getElementById("length").value = length;
+  document.getElementById("width").value = widthMax;
+  document.getElementById('widthIncrement').value = widthIncrementMax;
+  document.getElementById('widthDuration').value = widthDurationMax;
+  document.getElementById('colorDuration').value = colorDurationMax;
+  document.getElementById('colorIncrement').value = colorIncrementMax;
   setInterval(randDraw,timeValue);
 }

@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html>
 	<head>
-    <script src="kalid.js" type="text/javascript"></script>
+    <script src="kalido.js" type="text/javascript"></script>
 	</head>
 	<body onload="init()" style="background-color: black;">
 		<div style="z-index:4; position:absolute; top:0px; left:0px;">
 			<canvas id="canvas" width="1700" height="900" style="border:1px solid #000000;"></canvas>
 		</div>
 		<div id="console" style="position:absolute; top:0px; left:1700px; background-color: white;">
-			<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+			<form>
 				<fieldset>
 					<legend>Line Segment Maximums</legend>
-					Number: <input name="segments" type="text" size="3" value = <?php echo $segments; ?>><br>
-					Length: <input name="length" type="text" size="4" value = <?php echo $length; ?>><br>
-					Width: <input name="width" type="text" size="3" value = <?php echo $width; ?>><br>
-					Width Increment: <input name="widthIncrement" type="text" size="3" value = <?php echo $widthIncrement; ?>><br>
-					Width Duration: <input name="widthDuration" type="text" size="3" value = <?php echo $widthDuration; ?>><br>
+					Number: <input name="segments" id="segments" type="number" size="3" onchange="resetSegments(this.value)"><br>
+					Length: <input name="length" id="length" type="number" size="4" onchange="resetLength(this.value)"><br>
+					Width: <input name="width" id="width" type="number" size="3" onchange="resetWidth(this.value)"><br>
+					Width Increment: <input name="widthIncrement" id="widthIncrement" type="number" size="3" onchange="resetWidthIncrement(this.value)"><br>
+					Width Duration: <input name="widthDuration" id="widthDuration" type="number" size="3" onchange="resetWidthDuration(this.value)"><br>
 				</fieldset>
 				<fieldset>
 					<legend>Color Maximums</legend>
-					Increment: <input name="colorIncrement" type="text" size="3" value=<?php echo $colorIncrement; ?>><br>
-					Duration: <input name="colorDuration" tupe="text" size="3" value=<?php echo $colorDuration; ?>><br>
+					Increment: <input name="colorIncrement" id="colorIncrement" type="number" size="3" onchange="resetColorIncrement(this.value)"><br>
+					Duration: <input name="colorDuration" id="colorDuration" type="number" size="3" onchange="resetColorDuration(this.value)"><br>
 				</fieldset>
-				<input type="submit" value="Submit">
 			</form>
 		</div>
 	</body>
